@@ -1,0 +1,66 @@
+---
+title: "Gravity equation assignment"
+author: "Neil Rankin"
+date: "March 22, 2017"
+output:
+  pdf_document: default
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## Introduction
+
+- The intention of this assignment is to provide a 'hands-on' introduction to using the gravity model to investigate a trade policy related question. 
+
+- Please work in groups, of either two or three.
+
+- You can work in either Stata or R.
+
+- Submit two files[^1]
+    + A pdf or word file with the responses to the questions
+    + A do file or R script which will produce the results in the first document
+    
+- Submit short and concise answers. You do not get marks for length; in fact very often it counts against you.
+
+- The due date for the assignment is 26^th^ April 2017.
+
+
+
+
+## Assignment
+1. Prepare the data and provide a brief explanation of each variable along with some descriptive statistics (for example number of countries, average GDP, distance etc).
+
+2. The data set contains standard variables for the estimation of a gravity model. A proxy for institutional quality (from the World Bank) has been added. Discuss the usefulness of these proxies (cite at least three papers); provide possible alternatives.
+
+3. Run the following regression by using three different estimation techniques and provide the results (except dummies) in six different tables. 
+
+$$
+\begin{split}
+lnX_{ijt} = \beta_{0} + \beta_{1}lnGDP_{it} + \beta_{2}lnGDP_{jt} + \beta_{3}lnDist_{ij} + \beta_{4}Inst_{it} + \beta_{5}Colony_{ij} \\
++ \beta_{6}Language_{ij} + \beta_{7}Religion_{ij} + \beta_{8}Contiguity_{ij} + \mu_{i} + \eta_{j} + \nu_{t} + \epsilon_{ijt}
+\end{split}
+$$
+
+There are six different proxies of institutional quality in the data set. Include only one per regression plus the remaining standard gravity variables. Each table should contain three regressions (pooled OLS, FE, RE) which use one of the six proxies for institutional quality. Hence, in the end you should have six tables with three regressions each. It is hugely inefficient to cut and paste your regression results (and dangerous since you can make mistakes in the process). Rather use something like `outreg2` for Stata (needs to be installed: type “ssc install outreg2”) or `stargazer` for R.
+
+a) Pooled OLS: what is meant by pooled OLS? Under which assumptions is pooled OLS appropriate? Which statistical tests can be performed to test this?
+
+b) Fixed effects: what is the crucial assumption of fixed effects estimation? Write down the estimated equation which is obtained by the within-transformation in matrix notation (including dimensions).
+
+c) Random effects: under what circumstances should a random effects estimator be used instead of fixed effects? Is there a justification for still teaching random effects in a panel data econometrics course? Run a test whether random effects could be used or not.
+
+4. Interpret all coefficients (except the fixed-effects) of one of the six tables. Base your arguments on statistical tests and economic theory.
+
+5. Add an interaction term of institutional quality and a dummy of EU-membership of the importing country. Therefore, create a dummy which is equal to one if the importing country is currently a member of the EU. Provide the results of a pooled OLS and a fixed effects regression in an additional table. To reduce workload, use only one proxy of institutional quality. Provide arguments for your choice of the institutional proxy.
+
+6. What is the rationale for including this interaction term? Provide a detailed economic interpretation of the regression in general and of the coefficient of the interaction term in particular.
+
+7. This final exercise is optional. This means, all above exercises count together as 100%. However, a proper problem set should always contain something new which has not been covered so far. Hence, you could even obtain more than 100% or replace lost points. Why is the coefficient of the interaction likely to be endogenous? Replace the interaction term with its one-year lag. Does this help? Can you justify this economically?
+
+
+[^1]:
+If you are using R you can combine these two steps by submitting an RMarkdown file. If you are interested in data analysis and want to get into this world (either as an academic or in some data science-style role), my **strong** suggestion would be to go this route.
